@@ -1,6 +1,8 @@
 extends RigidBody2D
 
 
+signal not_catched
+
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
@@ -16,15 +18,7 @@ func hit_target():
 #	pass
 
 
-func _on_Piranha_body_entered(body):
-	var foo = ""
-	pass # replace with function body
-
-
-func _on_Piranha_body_shape_entered(body_id, body, body_shape, local_shape):
-	var foo = ""
-	pass # replace with function body
-
-
 func _on_Visibility_screen_exited():
+	hit_target()
+	emit_signal("not_catched")
 	queue_free()

@@ -8,5 +8,4 @@ func _ready():
 
 func _process(delta):
 	var offset = follow.get_offset()
-	
 	follow.set_offset(follow.get_offset() - speed * delta)
