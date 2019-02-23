@@ -25,7 +25,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 145.62, -274.488, -124.942, -52.6979, 4.85756, -1.02599, 0, 0, 148.057, -49.6979 )
 }
 
-[node name="Main" type="Node" index="0"]
+[node name="Main" type="Node"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
@@ -37,7 +37,7 @@ position = Vector2( 284.033, 512.551 )
 scale = Vector2( 4.02659, 3.98432 )
 frames = SubResource( 1 )
 animation = "default"
-frame = 3
+frame = 2
 playing = true
 _sections_unfolded = [ "Pause", "Visibility" ]
 

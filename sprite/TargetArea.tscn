@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[node name="TargetArea" type="Area2D"]
+[node name="TargetArea" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -25,13 +25,23 @@ scale = Vector2( 23.9932, 24.1637 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="placeholder-1-e1533569576673-960x960" type="Sprite" parent="TargetCollsion" index="0"]
+[node name="splat" type="Sprite" parent="TargetCollsion" index="0"]
 
+visible = false
 position = Vector2( -0.0376077, -0.101893 )
 scale = Vector2( 0.0207879, 0.0209058 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
+[node name="splatTimer" type="Timer" parent="." index="1"]
+
+process_mode = 1
+wait_time = 0.2
+one_shot = false
+autostart = false
+
 [connection signal="body_entered" from="." to="." method="_on_TargetArea_piranha_entered"]
+
+[connection signal="timeout" from="splatTimer" to="." method="_on_splatTimer_timeout"]
 
 
