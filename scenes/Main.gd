@@ -1,6 +1,5 @@
 extends Node
 
-export var delay = 0.77
 onready var PiranhaFollow = preload("res://sprite/PiranhaFollow.tscn")
 # class member variables go here, for example:
 # var a = 2
@@ -8,7 +7,7 @@ onready var PiranhaFollow = preload("res://sprite/PiranhaFollow.tscn")
 var linesList=[]
 var lineTimerList
 func _ready():
-	
+	$DelayTimer.start()
 	var linesContainer = $Lines
 	var i = int(0)
 	for line in linesContainer.get_children():
@@ -17,34 +16,28 @@ func _ready():
 	lineTimerList = []
 	lineTimerList.resize(linesCount)
 	for i in range(linesCount):
-		lineTimerList[i] = get_random_spawn_time()
+		lineTimerList[i] = i / 10
 	
 func get_random_spawn_time():
-	return float(rand_range(0.1, 1))
+	randomize()
+	return float(round(rand_range(5, 10)))
 
 func discrease_timers(delta):
-	var i = 0;
-	for line in linesList:
+	for i in range(lineTimerList.size()):
 		var timer = lineTimerList[i]
-		lineTimerList[i] = timer - delta
-		i = i + 1
+		if timer > 0:
+			lineTimerList[i] -= delta
 
-func _process(delta):
-	discrease_timers(delta * delay)
-	var line = get_line_with_timeout()
-	if line:
-		spawn_at_line(line)	
 
-func get_random_line_index():
-	var countOfLines = linesList.size()
-	var randomIndex = rand_range(0, countOfLines)
+func get_random_index(minIndex, maxIndex):
+	var randomIndex = round(rand_range(minIndex, maxIndex))
 	return randomIndex
 
 
 func spawn_random_prianha():
-	var lineIndex = get_random_line_index()
-	var line = linesList[lineIndex]	
-	spawn_at_line(line)
+	var line = 	get_random_ready_line()
+	if line:
+		spawn_at_line(line)
 	
 	
 func spawn_at_line(line):
@@ -54,12 +47,36 @@ func spawn_at_line(line):
 	line.start()
 
 	
-func get_line_with_timeout():
-	var i = 0;
-	for line in linesList:
-		var timer = lineTimerList[i]
-		if timer <= 0:
-			lineTimerList[i] = get_random_spawn_time()
-			return line
-		i = i + 1
+func randomize_line_timer(lineTimerIndex):
+	lineTimerList[lineTimerIndex] = get_random_spawn_time()
+	
+func get_random_ready_line():
+	var readyLines = []
+	for i in range(linesList.size() -1):
+		if can_line_spawn(i):
+			readyLines.append(linesList[i])
+	if readyLines.size() > 0:
+		var randomIndex = get_random_index(0, readyLines.size() -1)
+		return readyLines[randomIndex]
 	return null
+	
+func can_line_spawn(lineIndex):
+	var timer = lineTimerList[lineIndex]
+	if timer <= 0:
+		return true
+	return false
+
+
+func game_over():
+	get_tree().change_scene("res://scenes/GameLogo.tscn")
+	pass
+
+func _on_Deathzone_body_entered(body):
+	game_over()
+
+
+func _on_DelayTimer_timeout():
+	discrease_timers(0.1)
+	spawn_random_prianha()
+	$DelayTimer.start()
+	

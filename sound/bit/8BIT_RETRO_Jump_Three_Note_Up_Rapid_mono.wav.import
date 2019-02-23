@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/8BIT_RETRO_Jump_Three_Note_Up_Rapid_mono.wav-536720430e9a4b8108656a99466fa43b.sample"
+
+[deps]
+
+source_file="res://sound/bit/8BIT_RETRO_Jump_Three_Note_Up_Rapid_mono.wav"
+dest_files=[ "res://.import/8BIT_RETRO_Jump_Three_Note_Up_Rapid_mono.wav-536720430e9a4b8108656a99466fa43b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

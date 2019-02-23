@@ -47,6 +47,7 @@ _sections_unfolded = [ "Angular", "Applied Forces", "Transform" ]
 position = Vector2( -0.373428, 0.951885 )
 scale = Vector2( 0.723807, 0.620456 )
 shape = SubResource( 1 )
+disabled = true
 _sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="Visibility" type="VisibilityNotifier2D" parent="." index="1"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/Main.gd" type="Script" id=1]
 [ext_resource path="res://art/BG_1000ms/pixil-frame-0.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://art/BG_1000ms/pixil-frame-4.png" type="Texture" id=6]
 [ext_resource path="res://script/PrianhaPath.gd" type="Script" id=7]
 [ext_resource path="res://sprite/TargetArea.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sprite/Player.tscn" type="PackedScene" id=9]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -25,11 +26,20 @@ _data = {
 "points": PoolVector2Array( 0, 0, 145.62, -274.488, -124.942, -52.6979, 4.85756, -1.02599, 0, 0, 148.057, -49.6979 )
 }
 
-[node name="Main" type="Node"]
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 88.471, 10 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 33.3022, 10 )
+
+[node name="Main" type="Node" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
-delay = 0.2
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 
@@ -37,7 +47,7 @@ position = Vector2( 284.033, 512.551 )
 scale = Vector2( 4.02659, 3.98432 )
 frames = SubResource( 1 )
 animation = "default"
-frame = 2
+frame = 1
 playing = true
 _sections_unfolded = [ "Pause", "Visibility" ]
 
@@ -48,8 +58,8 @@ position = Vector2( 274.942, 918.698 )
 [node name="PiranhaPath" type="Path2D" parent="Lines" index="0"]
 
 self_modulate = Color( 0.5, 0.6, 1, 0.7 )
-position = Vector2( 2.24805, 0 )
-scale = Vector2( 1.01799, 1 )
+position = Vector2( 1.7077, -15.4286 )
+scale = Vector2( 1.01799, 0.689551 )
 curve = SubResource( 2 )
 script = ExtResource( 7 )
 speed = 100
@@ -63,8 +73,8 @@ _sections_unfolded = [ "Transform" ]
 [node name="PiranhaPath2" type="Path2D" parent="Lines" index="1"]
 
 self_modulate = Color( 1, 0.942871, 0.0859375, 0.7 )
-position = Vector2( -7.10798, 15.2192 )
-scale = Vector2( 1.22917, 1.29323 )
+position = Vector2( -3.23505, -0.656672 )
+scale = Vector2( 1.31207, 0.962909 )
 curve = SubResource( 2 )
 script = ExtResource( 7 )
 _sections_unfolded = [ "Transform", "Visibility" ]
@@ -79,8 +89,8 @@ _sections_unfolded = [ "Transform" ]
 [node name="PiranhaPath3" type="Path2D" parent="Lines" index="2"]
 
 self_modulate = Color( 1, 0.942871, 0.0859375, 0.7 )
-position = Vector2( -10.601, 40.6997 )
-scale = Vector2( 1.37788, 1.64827 )
+position = Vector2( -4.892, 20.1176 )
+scale = Vector2( 1.47547, 1.32111 )
 curve = SubResource( 2 )
 script = ExtResource( 7 )
 _sections_unfolded = [ "Transform", "Visibility" ]
@@ -91,5 +101,62 @@ speed = 100
 position = Vector2( -126.385, -51.2297 )
 scale = Vector2( 0.0248845, 0.0112956 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="Player" parent="." index="2" instance=ExtResource( 9 )]
+
+position = Vector2( 281.302, 850.351 )
+scale = Vector2( 1.47862, 1.47862 )
+SPEED = 250
+JUMP_POWER = -250
+
+[node name="Ground" type="Node2D" parent="." index="3"]
+
+editor/display_folded = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Ground" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Ground/StaticBody2D" index="0"]
+
+position = Vector2( 282.224, 878.402 )
+shape = SubResource( 3 )
+
+[node name="Deathzone" type="Area2D" parent="." index="4"]
+
+position = Vector2( 291.938, 961.631 )
+scale = Vector2( 9.13758, 2.14015 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Deathzone" index="0"]
+
+modulate = Color( 0.988281, 0.0154419, 0.0154419, 1 )
+self_modulate = Color( 0.695312, 0.0135803, 0.0135803, 1 )
+position = Vector2( -0.186003, -17.679 )
+shape = SubResource( 4 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="DelayTimer" type="Timer" parent="." index="5"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[connection signal="body_entered" from="Deathzone" to="." method="_on_Deathzone_body_entered"]
+
+[connection signal="timeout" from="DelayTimer" to="." method="_on_DelayTimer_timeout"]
 
 
