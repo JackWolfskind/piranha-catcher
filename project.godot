@@ -11,8 +11,14 @@ config_version=3
 [application]
 
 config/name="Piranha-Catcher"
-run/main_scene="res://sprite/line.tscn"
+run/main_scene="res://scenes/Main.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=576
+window/size/height=1024
+window/handheld/orientation="portrait"
 
 [rendering]
 

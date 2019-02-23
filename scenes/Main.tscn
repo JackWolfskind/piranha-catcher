@@ -1,0 +1,86 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scenes/Main.gd" type="Script" id=1]
+[ext_resource path="res://art/BG_1000ms/pixil-frame-0.png" type="Texture" id=2]
+[ext_resource path="res://art/BG_1000ms/pixil-frame-1.png" type="Texture" id=3]
+[ext_resource path="res://art/BG_1000ms/pixil-frame-2.png" type="Texture" id=4]
+[ext_resource path="res://art/BG_1000ms/pixil-frame-3.png" type="Texture" id=5]
+[ext_resource path="res://art/BG_1000ms/pixil-frame-4.png" type="Texture" id=6]
+[ext_resource path="res://script/PrianhaPath.gd" type="Script" id=7]
+[ext_resource path="res://sprite/TargetArea.tscn" type="PackedScene" id=8]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 0.5
+} ]
+
+[sub_resource type="Curve2D" id=2]
+
+bake_interval = 5.0
+_data = {
+"points": PoolVector2Array( 0, 0, 145.62, -274.488, -124.942, -52.6979, 0, 0, 0, 0, 148.057, -49.6979 )
+}
+
+[node name="Main" type="Node" index="0"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pause" ]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+
+position = Vector2( 284.033, 512.098 )
+scale = Vector2( 4.02659, 3.98432 )
+frames = SubResource( 1 )
+animation = "default"
+playing = true
+_sections_unfolded = [ "Pause", "Visibility" ]
+
+[node name="Lines" type="Node2D" parent="." index="1"]
+
+position = Vector2( 274.942, 918.698 )
+
+[node name="PiranhaPath" type="Path2D" parent="Lines" index="0"]
+
+self_modulate = Color( 0.5, 0.6, 1, 0.7 )
+position = Vector2( 2.24805, 0 )
+scale = Vector2( 1.01799, 1 )
+curve = SubResource( 2 )
+script = ExtResource( 7 )
+speed = 100
+
+[node name="TargetArea" parent="Lines/PiranhaPath" index="0" instance=ExtResource( 8 )]
+
+position = Vector2( -127.031, -50.8666 )
+scale = Vector2( 0.0583129, 0.0184544 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="PiranhaPath2" type="Path2D" parent="Lines" index="1"]
+
+self_modulate = Color( 1, 0.942871, 0.0859375, 0.7 )
+position = Vector2( -7.10798, 15.2192 )
+scale = Vector2( 1.22917, 1.29323 )
+curve = SubResource( 2 )
+script = ExtResource( 7 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+speed = 100
+
+[node name="TargetArea" parent="Lines/PiranhaPath2" index="0" instance=ExtResource( 8 )]
+
+position = Vector2( -127.14, -50.2108 )
+scale = Vector2( 0.0236526, 0.0187495 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="SpawnTimer" type="Timer" parent="." index="2"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
+
+

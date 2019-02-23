@@ -19,14 +19,13 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Piranha" type="RigidBody2D" index="0"]
+[node name="Piranha" type="RigidBody2D"]
 
-position = Vector2( 90.7406, 90.5961 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
-mode = 0
-mass = 1.0
+mode = 3
+mass = 0.01
 friction = 1.0
 bounce = 0.0
 gravity_scale = 1.0
@@ -52,18 +51,16 @@ _sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="Visibility" type="VisibilityNotifier2D" parent="." index="1"]
 
-position = Vector2( -0.608307, -0.206055 )
 scale = Vector2( 0.724888, 0.869866 )
 rect = Rect2( -10, -10, 20, 20 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="2"]
 
-position = Vector2( -0.277771, -0.0694427 )
-rotation = -1.0472
+rotation = 0.409991
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 2 )
 animation = "default"
-frame = 1
 playing = true
 _sections_unfolded = [ "Transform" ]
 

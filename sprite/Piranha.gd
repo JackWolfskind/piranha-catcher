@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 
-signal not_catched
+signal hit
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -11,14 +11,11 @@ func _ready():
 
 func hit_target():
 	hide()
+	emit_signal("hit")
 	$CollisionShape2D.disabled = true
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+	queue_free()
 
 
 func _on_Visibility_screen_exited():
 	hit_target()
-	emit_signal("not_catched")
-	queue_free()
+	
