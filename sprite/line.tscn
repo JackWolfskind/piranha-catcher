@@ -14,13 +14,13 @@ extents = Vector2( 13, 13 )
 
 bake_interval = 5.0
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 0.168503, 68.7199, 0, 0, 0, 0, 0.0227966, -0.15949 )
+"points": PoolVector2Array( 0, 0, 0, 0, 0.0367889, 64.0737, 0, 0, 0, 0, 0.0227966, -0.15949 )
 }
 
-[node name="Spawn-line" type="Area2D"]
+[node name="Spawn-line" type="Area2D" index="0"]
 
-position = Vector2( 436.388, 278.812 )
-scale = Vector2( 7.40117, 7.40117 )
+position = Vector2( 436.987, 278.367 )
+scale = Vector2( 7.40117, 7.38727 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -38,14 +38,14 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
-position = Vector2( 0.0494121, -0.0531415 )
+position = Vector2( 0.049408, 0.0279121 )
 scale = Vector2( 0.939186, 2.63191 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="TargetArea" parent="." index="2" instance=ExtResource( 2 )]
 
-position = Vector2( 0.0276575, 28.4772 )
+position = Vector2( 0.0276527, 28.4772 )
 scale = Vector2( 0.0513249, 0.0245318 )
 
 [node name="PrianhaPath" type="Path2D" parent="." index="3"]
@@ -59,8 +59,9 @@ speed = 10
 
 [node name="PiranhaFollow" type="PathFollow2D" parent="PrianhaPath" index="0"]
 
-position = Vector2( 0.168503, 68.7199 )
-rotation = -1.57291
+position = Vector2( 0.13076, 1.75571 )
+rotation = -1.5652
+scale = Vector2( 0.161323, 0.161323 )
 offset = 0.0
 h_offset = 0.0
 v_offset = 0.0
@@ -68,10 +69,14 @@ rotate = true
 cubic_interp = true
 loop = true
 lookahead = 4.0
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Piranha" parent="PrianhaPath/PiranhaFollow" index="0" instance=ExtResource( 4 )]
 
-position = Vector2( 64.8834, -0.0465584 )
+position = Vector2( 0, 0 )
 rotation = 1.57291
+_sections_unfolded = [ "Angular", "Applied Forces", "Linear", "Transform" ]
 
 

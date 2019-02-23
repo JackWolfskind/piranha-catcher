@@ -45,17 +45,32 @@ _sections_unfolded = [ "Angular", "Applied Forces", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
-position = Vector2( -0.267293, -0.545397 )
-scale = Vector2( 0.341051, 0.346335 )
+position = Vector2( -0.373428, 0.951885 )
+scale = Vector2( 0.723807, 0.620456 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="1"]
 
+position = Vector2( -0.608307, -0.206055 )
+scale = Vector2( 0.724888, 0.869866 )
+rect = Rect2( -10, -10, 20, 20 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="2"]
+
+position = Vector2( -0.277771, -0.0694427 )
 rotation = -1.0472
+scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 2 )
 animation = "default"
+frame = 1
 playing = true
 _sections_unfolded = [ "Transform" ]
+
+[connection signal="body_entered" from="." to="." method="_on_Piranha_body_entered"]
+
+[connection signal="body_shape_entered" from="." to="." method="_on_Piranha_body_shape_entered"]
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_Visibility_screen_exited"]
 
 
