@@ -47,6 +47,8 @@ _sections_unfolded = [ "Transform" ]
 
 position = Vector2( 0.184017, 0.240483 )
 scale = Vector2( 0.022333, 0.0444985 )
+SHOW_SPLASH = false
+SHOW_DAMAGE = true
 
 [connection signal="body_entered" from="TargetArea" to="." method="_on_TargetArea_body_entered"]
 

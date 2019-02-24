@@ -11,11 +11,14 @@ signal death
 signal point
 
 
+func _ready():
+	$TargetArea.SHOW_DAMAGE = true
+	$TargetArea.SHOW_SPLASH = false
+
 func jump(y):
 	velocity.y = y
 
 func _physics_process(delta):
-	
 	if Input.is_action_pressed('ui_right'):
 		velocity.x = SPEED
 	elif Input.is_action_pressed('ui_left'):

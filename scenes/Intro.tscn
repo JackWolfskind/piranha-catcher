@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/Intro.gd" type="Script" id=1]
+[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://sprite/Background.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprite/Back to GameLogo.tscn" type="PackedScene" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 20
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
+[node name="Intro" type="Node2D"]
+
+script = ExtResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="Label" type="Label" parent="CanvasLayer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 9.0
+margin_top = -41.0
+margin_right = 564.0
+margin_bottom = 964.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.0507812, 0.0507812, 0.0507812, 1 )
+text = "Wir schreiben das Jahr 2300, der Klima-Wandel hat 86,45% der Landpläche überschwämt.
+
+Die Menschheit nur noch auf kleinen Inseln. 
+
+Piranhas wurden durch die neuen Umständen zu Dominirenden Rasse.
+
+Die Menschen ernähren sich zum großteil von Fisch, allerdings ist der Fischfang höchst gefährlich, und nur die Mutigsten trauen sich
+
+Diese Eliten der Menschheit werden Platzhalter genannt.
+
+Ihr seid einer dieser Platzhalter und geht auf Fischfang um diese zu verkaufen doch nehmt euch vor den Piranhas in acht."
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="1"]
+
+stream = null
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="AnimatedSprite" parent="." index="2" instance=ExtResource( 3 )]
+
+frame = 1
+
+[node name="Back to GameLogo" parent="." index="3" instance=ExtResource( 4 )]
+
+margin_left = 230.0
+margin_right = 334.0
+text = "Skip"
+
+[node name="IntroTimer" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = true
+
+[connection signal="timeout" from="IntroTimer" to="." method="_on_IntroTimer_timeout"]
+
+

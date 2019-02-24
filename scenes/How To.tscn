@@ -1,35 +1,22 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://sprite/How To.gd" type="Script" id=1]
-[ext_resource path="res://art/BG_1000ms/pixil-frame-0.png" type="Texture" id=2]
-[ext_resource path="res://art/BG_1000ms/pixil-frame-1.png" type="Texture" id=3]
-[ext_resource path="res://art/BG_1000ms/pixil-frame-2.png" type="Texture" id=4]
-[ext_resource path="res://art/BG_1000ms/pixil-frame-3.png" type="Texture" id=5]
-[ext_resource path="res://art/BG_1000ms/pixil-frame-4.png" type="Texture" id=6]
-[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=7]
-[ext_resource path="res://sprite/Back to GameLogo.tscn" type="PackedScene" id=8]
-[ext_resource path="res://sprite/Piranha.tscn" type="PackedScene" id=9]
-[ext_resource path="res://sprite/Fish.tscn" type="PackedScene" id=10]
-[ext_resource path="res://art/PixelArt.png" type="Texture" id=11]
+[ext_resource path="res://sprite/Background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://sprite/Back to GameLogo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sprite/Piranha.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sprite/Fish.tscn" type="PackedScene" id=6]
+[ext_resource path="res://art/PixelArt.png" type="Texture" id=7]
 
-[sub_resource type="SpriteFrames" id=1]
-
-animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "default",
-"speed": 0.8
-} ]
-
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 
 size = 32
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 7 )
+font_data = ExtResource( 3 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
 
-[node name="How To" type="Area2D" index="0"]
+[node name="How To" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -40,14 +27,9 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+[node name="AnimatedSprite" parent="." index="0" instance=ExtResource( 2 )]
 
-position = Vector2( 287.699, 511.328 )
-scale = Vector2( 4.00681, 4.00681 )
-frames = SubResource( 1 )
-animation = "default"
 frame = 4
-playing = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="1"]
 
@@ -73,7 +55,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Jump"
 align = 1
 valign = 1
@@ -98,7 +80,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Left"
 align = 1
 valign = 1
@@ -123,7 +105,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Be care of
 the Piranhas"
 align = 1
@@ -149,7 +131,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Catch this fishes
 To sell them"
 align = 1
@@ -175,7 +157,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Right"
 align = 1
 valign = 1
@@ -200,7 +182,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "The Water is full of Piranhas!!!"
 align = 1
 valign = 1
@@ -209,14 +191,14 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Focus", "Hint", "Material", "Mouse", "Pause", "Rect", "Size Flags", "Theme", "Visibility", "custom_fonts", "custom_styles" ]
 
-[node name="Back to GameLogo" parent="CanvasLayer" index="6" instance=ExtResource( 8 )]
+[node name="Back to GameLogo" parent="CanvasLayer" index="6" instance=ExtResource( 4 )]
 
-[node name="Piranha" parent="CanvasLayer" index="7" instance=ExtResource( 9 )]
+[node name="Piranha" parent="CanvasLayer" index="7" instance=ExtResource( 5 )]
 
 position = Vector2( 116.68, 511.921 )
 scale = Vector2( 2.7921, 2.7921 )
 
-[node name="Fish" parent="CanvasLayer" index="8" instance=ExtResource( 10 )]
+[node name="Fish" parent="CanvasLayer" index="8" instance=ExtResource( 6 )]
 
 position = Vector2( 409.129, 513.738 )
 scale = Vector2( 2.84965, 2.84965 )
@@ -225,6 +207,6 @@ scale = Vector2( 2.84965, 2.84965 )
 
 position = Vector2( 280.378, 320.01 )
 scale = Vector2( 0.578414, 0.578414 )
-texture = ExtResource( 11 )
+texture = ExtResource( 7 )
 
 

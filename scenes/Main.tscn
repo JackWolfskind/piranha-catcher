@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/Main.gd" type="Script" id=1]
 [ext_resource path="res://art/BG_1000ms/pixil-frame-0.png" type="Texture" id=2]
@@ -7,8 +7,8 @@
 [ext_resource path="res://art/BG_1000ms/pixil-frame-3.png" type="Texture" id=5]
 [ext_resource path="res://art/BG_1000ms/pixil-frame-4.png" type="Texture" id=6]
 [ext_resource path="res://script/PrianhaPath.gd" type="Script" id=7]
-[ext_resource path="res://sprite/TargetArea.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/PathDelayTimer.gd" type="Script" id=9]
+[ext_resource path="res://scenes/PathDelayTimer.gd" type="Script" id=8]
+[ext_resource path="res://sprite/TargetArea.tscn" type="PackedScene" id=9]
 [ext_resource path="res://sprite/Player.tscn" type="PackedScene" id=10]
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=11]
 
@@ -46,6 +46,17 @@ use_filter = false
 font_data = ExtResource( 11 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
+[sub_resource type="AudioStreamSample" id=6]
+
+format = 0
+loop_mode = 1
+loop_begin = 0
+loop_end = 0
+mix_rate = 44100
+stereo = true
+data = PoolByteArray(  )
+_sections_unfolded = [ "Resource" ]
+
 [node name="Main" type="Node"]
 
 script = ExtResource( 1 )
@@ -57,7 +68,7 @@ position = Vector2( 284.033, 512.551 )
 scale = Vector2( 4.02659, 3.98432 )
 frames = SubResource( 1 )
 animation = "default"
-frame = 2
+frame = 3
 playing = true
 _sections_unfolded = [ "Pause", "Visibility" ]
 
@@ -75,19 +86,13 @@ script = ExtResource( 7 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 speed = 100
 
-[node name="TargetArea" parent="Lines/PiranhaPath2" index="0" instance=ExtResource( 8 )]
-
-position = Vector2( -127.14, -50.2108 )
-scale = Vector2( 0.0236526, 0.0187495 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="PathDelayTimer" type="Timer" parent="Lines/PiranhaPath2" index="1"]
+[node name="PathDelayTimer" type="Timer" parent="Lines/PiranhaPath2" index="0"]
 
 process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
-script = ExtResource( 9 )
+script = ExtResource( 8 )
 
 [node name="PiranhaPath7" type="Path2D" parent="Lines" index="1"]
 
@@ -99,11 +104,11 @@ script = ExtResource( 7 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 speed = 100
 
-[node name="TargetArea" parent="Lines/PiranhaPath7" index="0" instance=ExtResource( 8 )]
+[node name="TargetArea" parent="Lines/PiranhaPath7" index="0" instance=ExtResource( 9 )]
 
-position = Vector2( -127.14, -50.2108 )
-scale = Vector2( 0.0236526, 0.0187495 )
-_sections_unfolded = [ "Transform" ]
+position = Vector2( -125.486, -54.5954 )
+scale = Vector2( 0.01, 0.01 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="PathDelayTimer" type="Timer" parent="Lines/PiranhaPath7" index="1"]
 
@@ -111,7 +116,7 @@ process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
-script = ExtResource( 9 )
+script = ExtResource( 8 )
 
 [node name="PiranhaPath4" type="Path2D" parent="Lines" index="2"]
 
@@ -123,10 +128,10 @@ script = ExtResource( 7 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 speed = 100
 
-[node name="TargetArea" parent="Lines/PiranhaPath4" index="0" instance=ExtResource( 8 )]
+[node name="TargetArea" parent="Lines/PiranhaPath4" index="0" instance=ExtResource( 9 )]
 
-position = Vector2( -127.14, -50.2108 )
-scale = Vector2( 0.0236526, 0.0187495 )
+position = Vector2( -147.114, -58.5895 )
+scale = Vector2( 0.01, 0.01 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="PathDelayTimer" type="Timer" parent="Lines/PiranhaPath4" index="1"]
@@ -135,7 +140,7 @@ process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
-script = ExtResource( 9 )
+script = ExtResource( 8 )
 
 [node name="PiranhaPath3" type="Path2D" parent="Lines" index="3"]
 
@@ -147,10 +152,10 @@ script = ExtResource( 7 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 speed = 100
 
-[node name="TargetArea" parent="Lines/PiranhaPath3" index="0" instance=ExtResource( 8 )]
+[node name="TargetArea" parent="Lines/PiranhaPath3" index="0" instance=ExtResource( 9 )]
 
-position = Vector2( -126.385, -51.2297 )
-scale = Vector2( 0.0248845, 0.0112956 )
+position = Vector2( -139.935, -62.0306 )
+scale = Vector2( 0.01, 0.01 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="PathDelayTimer" type="Timer" parent="Lines/PiranhaPath3" index="1"]
@@ -159,7 +164,7 @@ process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
-script = ExtResource( 9 )
+script = ExtResource( 8 )
 
 [node name="PiranhaPath5" type="Path2D" parent="Lines" index="4"]
 
@@ -171,10 +176,10 @@ script = ExtResource( 7 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 speed = 100
 
-[node name="TargetArea" parent="Lines/PiranhaPath5" index="0" instance=ExtResource( 8 )]
+[node name="TargetArea" parent="Lines/PiranhaPath5" index="0" instance=ExtResource( 9 )]
 
-position = Vector2( -126.385, -51.2297 )
-scale = Vector2( 0.0248845, 0.0112956 )
+position = Vector2( -138.925, -62.2885 )
+scale = Vector2( 0.01, 0.01 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="PathDelayTimer" type="Timer" parent="Lines/PiranhaPath5" index="1"]
@@ -183,7 +188,7 @@ process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
-script = ExtResource( 9 )
+script = ExtResource( 8 )
 
 [node name="PiranhaPath6" type="Path2D" parent="Lines" index="5"]
 
@@ -195,19 +200,13 @@ script = ExtResource( 7 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 speed = 100
 
-[node name="TargetArea" parent="Lines/PiranhaPath6" index="0" instance=ExtResource( 8 )]
-
-position = Vector2( -126.385, -51.2297 )
-scale = Vector2( 0.0248845, 0.0112956 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="PathDelayTimer" type="Timer" parent="Lines/PiranhaPath6" index="1"]
+[node name="PathDelayTimer" type="Timer" parent="Lines/PiranhaPath6" index="0"]
 
 process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
-script = ExtResource( 9 )
+script = ExtResource( 8 )
 
 [node name="PiranhaPath8" type="Path2D" parent="Lines" index="6"]
 
@@ -219,10 +218,10 @@ script = ExtResource( 7 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 speed = 100
 
-[node name="TargetArea" parent="Lines/PiranhaPath8" index="0" instance=ExtResource( 8 )]
+[node name="TargetArea" parent="Lines/PiranhaPath8" index="0" instance=ExtResource( 9 )]
 
-position = Vector2( -126.385, -51.2297 )
-scale = Vector2( 0.0248845, 0.0112956 )
+position = Vector2( -123.46, -60.5306 )
+scale = Vector2( 0.0131588, 0.0157994 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="PathDelayTimer" type="Timer" parent="Lines/PiranhaPath8" index="1"]
@@ -231,7 +230,7 @@ process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
-script = ExtResource( 9 )
+script = ExtResource( 8 )
 
 [node name="Player" parent="." index="2" instance=ExtResource( 10 )]
 
@@ -261,7 +260,6 @@ shape = SubResource( 3 )
 
 [node name="Deathzone" type="Area2D" parent="." index="4"]
 
-editor/display_folded = true
 position = Vector2( 291.938, 961.631 )
 scale = Vector2( 9.13758, 2.14015 )
 input_pickable = true
@@ -317,6 +315,15 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts", "custom_styles" ]
+
+[node name="Soundtrack" type="AudioStreamPlayer" parent="." index="7"]
+
+stream = SubResource( 6 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+mix_target = 0
+bus = "Master"
 
 [connection signal="timeout" from="Lines/PiranhaPath2/PathDelayTimer" to="Lines/PiranhaPath2/PathDelayTimer" method="_on_PathDelayTimer_timeout"]
 

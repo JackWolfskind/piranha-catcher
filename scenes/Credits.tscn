@@ -42,7 +42,7 @@ position = Vector2( 289.117, 510.577 )
 scale = Vector2( 3.99099, 3.99099 )
 frames = SubResource( 1 )
 animation = "default"
-frame = 2
+frame = 3
 playing = true
 
 [node name="Label" type="Label" parent="." index="1"]

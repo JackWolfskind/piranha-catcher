@@ -46,7 +46,7 @@ func get_random_ready_line():
 	return null
 
 func game_over():
-	get_tree().change_scene("res://scenes/GameLogo.tscn")
+	get_tree().change_scene("res://scenes/GameOver.tscn")
 	pass
 
 func _on_Deathzone_body_entered(body):
