@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://script/PrianhaPath.gd" type="Script" id=1]
+[ext_resource path="res://sprite/TargetArea.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/PathDelayTimer.gd" type="Script" id=3]
+
+[sub_resource type="Curve2D" id=1]
+
+bake_interval = 5.0
+_data = {
+"points": PoolVector2Array( 0, 0, 145.62, -274.488, -125.014, -54.6973, 4.85756, -1.02599, 0, 0, 157.281, -33.8973 )
+}
+
+[node name="PiranhaPath" type="Path2D"]
+
+self_modulate = Color( 0.5, 0.6, 1, 0.7 )
+position = Vector2( 244.539, 399.269 )
+scale = Vector2( 0.872405, 0.813763 )
+curve = SubResource( 1 )
+script = ExtResource( 1 )
+speed = 100
+
+[node name="TargetArea" parent="." index="0" instance=ExtResource( 2 )]
+
+position = Vector2( -126.001, -50.8727 )
+scale = Vector2( 0.0261372, 0.0182663 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="PathDelayTimer" type="Timer" parent="." index="1"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = true
+script = ExtResource( 3 )
+
+[connection signal="timeout" from="PathDelayTimer" to="PathDelayTimer" method="_on_PathDelayTimer_timeout"]
+
+

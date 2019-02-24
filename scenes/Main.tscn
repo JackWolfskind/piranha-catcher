@@ -46,7 +46,7 @@ use_filter = false
 font_data = ExtResource( 11 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="Main" type="Node" index="0"]
+[node name="Main" type="Node"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
@@ -57,39 +57,15 @@ position = Vector2( 284.033, 512.551 )
 scale = Vector2( 4.02659, 3.98432 )
 frames = SubResource( 1 )
 animation = "default"
-frame = 3
+frame = 2
 playing = true
 _sections_unfolded = [ "Pause", "Visibility" ]
 
 [node name="Lines" type="Node2D" parent="." index="1"]
 
-editor/display_folded = true
 position = Vector2( 274.942, 918.698 )
 
-[node name="PiranhaPath" type="Path2D" parent="Lines" index="0"]
-
-self_modulate = Color( 0.5, 0.6, 1, 0.7 )
-position = Vector2( -3.57701, 5.56464 )
-scale = Vector2( 0.872405, 0.813763 )
-curve = SubResource( 2 )
-script = ExtResource( 7 )
-speed = 100
-
-[node name="TargetArea" parent="Lines/PiranhaPath" index="0" instance=ExtResource( 8 )]
-
-position = Vector2( -126.001, -50.8727 )
-scale = Vector2( 0.0261372, 0.0182663 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="PathDelayTimer" type="Timer" parent="Lines/PiranhaPath" index="1"]
-
-process_mode = 1
-wait_time = 1.0
-one_shot = false
-autostart = false
-script = ExtResource( 9 )
-
-[node name="PiranhaPath2" type="Path2D" parent="Lines" index="1"]
+[node name="PiranhaPath2" type="Path2D" parent="Lines" index="0"]
 
 self_modulate = Color( 1, 0.942871, 0.0859375, 0.7 )
 position = Vector2( -5.91874, 18.9313 )
@@ -113,7 +89,55 @@ one_shot = false
 autostart = false
 script = ExtResource( 9 )
 
-[node name="PiranhaPath3" type="Path2D" parent="Lines" index="2"]
+[node name="PiranhaPath7" type="Path2D" parent="Lines" index="1"]
+
+self_modulate = Color( 1, 0.942871, 0.0859375, 0.7 )
+position = Vector2( -5.91874, 18.9313 )
+scale = Vector2( 1.25937, 1.0786 )
+curve = SubResource( 2 )
+script = ExtResource( 7 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+speed = 100
+
+[node name="TargetArea" parent="Lines/PiranhaPath7" index="0" instance=ExtResource( 8 )]
+
+position = Vector2( -127.14, -50.2108 )
+scale = Vector2( 0.0236526, 0.0187495 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="PathDelayTimer" type="Timer" parent="Lines/PiranhaPath7" index="1"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+script = ExtResource( 9 )
+
+[node name="PiranhaPath4" type="Path2D" parent="Lines" index="2"]
+
+self_modulate = Color( 1, 0.942871, 0.0859375, 0.7 )
+position = Vector2( -5.91874, 18.9313 )
+scale = Vector2( 1.25937, 1.0786 )
+curve = SubResource( 2 )
+script = ExtResource( 7 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+speed = 100
+
+[node name="TargetArea" parent="Lines/PiranhaPath4" index="0" instance=ExtResource( 8 )]
+
+position = Vector2( -127.14, -50.2108 )
+scale = Vector2( 0.0236526, 0.0187495 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="PathDelayTimer" type="Timer" parent="Lines/PiranhaPath4" index="1"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+script = ExtResource( 9 )
+
+[node name="PiranhaPath3" type="Path2D" parent="Lines" index="3"]
 
 self_modulate = Color( 1, 0.942871, 0.0859375, 0.7 )
 position = Vector2( -5.15994, 36.8466 )
@@ -137,7 +161,7 @@ one_shot = false
 autostart = false
 script = ExtResource( 9 )
 
-[node name="PiranhaPath5" type="Path2D" parent="Lines" index="3"]
+[node name="PiranhaPath5" type="Path2D" parent="Lines" index="4"]
 
 self_modulate = Color( 1, 0.942871, 0.0859375, 0.7 )
 position = Vector2( -9.77991, 45.558 )
@@ -161,7 +185,7 @@ one_shot = false
 autostart = false
 script = ExtResource( 9 )
 
-[node name="PiranhaPath6" type="Path2D" parent="Lines" index="4"]
+[node name="PiranhaPath6" type="Path2D" parent="Lines" index="5"]
 
 self_modulate = Color( 1, 0.942871, 0.0859375, 0.7 )
 position = Vector2( -12.81, 58.0513 )
@@ -185,10 +209,34 @@ one_shot = false
 autostart = false
 script = ExtResource( 9 )
 
+[node name="PiranhaPath8" type="Path2D" parent="Lines" index="6"]
+
+self_modulate = Color( 1, 0.942871, 0.0859375, 0.7 )
+position = Vector2( -7.27341, -0.85498 )
+scale = Vector2( 0.903976, 0.69795 )
+curve = SubResource( 2 )
+script = ExtResource( 7 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+speed = 100
+
+[node name="TargetArea" parent="Lines/PiranhaPath8" index="0" instance=ExtResource( 8 )]
+
+position = Vector2( -126.385, -51.2297 )
+scale = Vector2( 0.0248845, 0.0112956 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="PathDelayTimer" type="Timer" parent="Lines/PiranhaPath8" index="1"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+script = ExtResource( 9 )
+
 [node name="Player" parent="." index="2" instance=ExtResource( 10 )]
 
-position = Vector2( 281.302, 850.351 )
-scale = Vector2( 1.47862, 1.47862 )
+position = Vector2( 276.075, 827.975 )
+scale = Vector2( 2.41314, 2.41314 )
 SPEED = 250
 JUMP_POWER = -250
 
@@ -270,15 +318,19 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts", "custom_styles" ]
 
-[connection signal="timeout" from="Lines/PiranhaPath/PathDelayTimer" to="Lines/PiranhaPath/PathDelayTimer" method="_on_PathDelayTimer_timeout"]
-
 [connection signal="timeout" from="Lines/PiranhaPath2/PathDelayTimer" to="Lines/PiranhaPath2/PathDelayTimer" method="_on_PathDelayTimer_timeout"]
+
+[connection signal="timeout" from="Lines/PiranhaPath7/PathDelayTimer" to="Lines/PiranhaPath7/PathDelayTimer" method="_on_PathDelayTimer_timeout"]
+
+[connection signal="timeout" from="Lines/PiranhaPath4/PathDelayTimer" to="Lines/PiranhaPath4/PathDelayTimer" method="_on_PathDelayTimer_timeout"]
 
 [connection signal="timeout" from="Lines/PiranhaPath3/PathDelayTimer" to="Lines/PiranhaPath3/PathDelayTimer" method="_on_PathDelayTimer_timeout"]
 
 [connection signal="timeout" from="Lines/PiranhaPath5/PathDelayTimer" to="Lines/PiranhaPath5/PathDelayTimer" method="_on_PathDelayTimer_timeout"]
 
 [connection signal="timeout" from="Lines/PiranhaPath6/PathDelayTimer" to="Lines/PiranhaPath6/PathDelayTimer" method="_on_PathDelayTimer_timeout"]
+
+[connection signal="timeout" from="Lines/PiranhaPath8/PathDelayTimer" to="Lines/PiranhaPath8/PathDelayTimer" method="_on_PathDelayTimer_timeout"]
 
 [connection signal="death" from="Player" to="." method="_on_Player_death"]
 

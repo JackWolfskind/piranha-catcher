@@ -19,3 +19,13 @@ func start_game():
 
 func _on_StartButton_pressed():
 	start_game()
+
+
+func _on_HowTo_pressed():
+	get_tree().change_scene("res://scenes/How To.tscn")
+	pass # replace with function body
+
+
+func _on_Credits_pressed():
+	get_tree().change_scene("res://scenes/Credits.tscn")
+	pass # replace with function body

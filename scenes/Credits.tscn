@@ -1,0 +1,95 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/Credits.gd" type="Script" id=1]
+[ext_resource path="res://art/BG_1000ms/pixil-frame-0.png" type="Texture" id=2]
+[ext_resource path="res://art/BG_1000ms/pixil-frame-1.png" type="Texture" id=3]
+[ext_resource path="res://art/BG_1000ms/pixil-frame-2.png" type="Texture" id=4]
+[ext_resource path="res://art/BG_1000ms/pixil-frame-3.png" type="Texture" id=5]
+[ext_resource path="res://art/BG_1000ms/pixil-frame-4.png" type="Texture" id=6]
+[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://PiranhaPath.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sprite/Back to GameLogo.tscn" type="PackedScene" id=9]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 0.8
+} ]
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 40
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 7 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+
+position = Vector2( 289.117, 510.577 )
+scale = Vector2( 3.99099, 3.99099 )
+frames = SubResource( 1 )
+animation = "default"
+frame = 2
+playing = true
+
+[node name="Label" type="Label" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 53.0
+margin_top = 81.0
+margin_right = 547.0
+margin_bottom = 726.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Design - karotofel
+
+Code - JackWolfskind
+
+Code - Noizu"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="PiranhaPath" parent="." index="2" instance=ExtResource( 8 )]
+
+position = Vector2( 278.06, 891.108 )
+
+[node name="PiranhaPath2" parent="." index="3" instance=ExtResource( 8 )]
+
+position = Vector2( 265.368, 958.692 )
+scale = Vector2( 1.86185, 1.53115 )
+
+[node name="PiranhaPath3" parent="." index="4" instance=ExtResource( 8 )]
+
+position = Vector2( 265.368, 994.581 )
+scale = Vector2( 1.86185, 2.58988 )
+
+[node name="Back to GameLogo" parent="." index="5" instance=ExtResource( 9 )]
+
+
