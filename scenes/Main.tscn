@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/Main.gd" type="Script" id=1]
 [ext_resource path="res://art/BG_1000ms/pixil-frame-0.png" type="Texture" id=2]
@@ -8,7 +8,9 @@
 [ext_resource path="res://art/BG_1000ms/pixil-frame-4.png" type="Texture" id=6]
 [ext_resource path="res://script/PrianhaPath.gd" type="Script" id=7]
 [ext_resource path="res://sprite/TargetArea.tscn" type="PackedScene" id=8]
-[ext_resource path="res://sprite/Player.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/PathDelayTimer.gd" type="Script" id=9]
+[ext_resource path="res://sprite/Player.tscn" type="PackedScene" id=10]
+[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -23,7 +25,7 @@ animations = [ {
 
 bake_interval = 5.0
 _data = {
-"points": PoolVector2Array( 0, 0, 145.62, -274.488, -124.942, -52.6979, 4.85756, -1.02599, 0, 0, 148.057, -49.6979 )
+"points": PoolVector2Array( 0, 0, 145.62, -274.488, -125.014, -54.6973, 4.85756, -1.02599, 0, 0, 157.281, -33.8973 )
 }
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -36,6 +38,14 @@ extents = Vector2( 88.471, 10 )
 custom_solver_bias = 0.0
 extents = Vector2( 33.3022, 10 )
 
+[sub_resource type="DynamicFont" id=5]
+
+size = 32
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 11 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
 [node name="Main" type="Node" index="0"]
 
 script = ExtResource( 1 )
@@ -47,19 +57,20 @@ position = Vector2( 284.033, 512.551 )
 scale = Vector2( 4.02659, 3.98432 )
 frames = SubResource( 1 )
 animation = "default"
-frame = 1
+frame = 3
 playing = true
 _sections_unfolded = [ "Pause", "Visibility" ]
 
 [node name="Lines" type="Node2D" parent="." index="1"]
 
+editor/display_folded = true
 position = Vector2( 274.942, 918.698 )
 
 [node name="PiranhaPath" type="Path2D" parent="Lines" index="0"]
 
 self_modulate = Color( 0.5, 0.6, 1, 0.7 )
-position = Vector2( 1.7077, -15.4286 )
-scale = Vector2( 1.01799, 0.689551 )
+position = Vector2( -3.57701, 5.56464 )
+scale = Vector2( 0.872405, 0.813763 )
 curve = SubResource( 2 )
 script = ExtResource( 7 )
 speed = 100
@@ -70,11 +81,19 @@ position = Vector2( -126.001, -50.8727 )
 scale = Vector2( 0.0261372, 0.0182663 )
 _sections_unfolded = [ "Transform" ]
 
+[node name="PathDelayTimer" type="Timer" parent="Lines/PiranhaPath" index="1"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+script = ExtResource( 9 )
+
 [node name="PiranhaPath2" type="Path2D" parent="Lines" index="1"]
 
 self_modulate = Color( 1, 0.942871, 0.0859375, 0.7 )
-position = Vector2( -3.23505, -0.656672 )
-scale = Vector2( 1.31207, 0.962909 )
+position = Vector2( -5.91874, 18.9313 )
+scale = Vector2( 1.25937, 1.0786 )
 curve = SubResource( 2 )
 script = ExtResource( 7 )
 _sections_unfolded = [ "Transform", "Visibility" ]
@@ -86,11 +105,19 @@ position = Vector2( -127.14, -50.2108 )
 scale = Vector2( 0.0236526, 0.0187495 )
 _sections_unfolded = [ "Transform" ]
 
+[node name="PathDelayTimer" type="Timer" parent="Lines/PiranhaPath2" index="1"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+script = ExtResource( 9 )
+
 [node name="PiranhaPath3" type="Path2D" parent="Lines" index="2"]
 
 self_modulate = Color( 1, 0.942871, 0.0859375, 0.7 )
-position = Vector2( -4.892, 20.1176 )
-scale = Vector2( 1.47547, 1.32111 )
+position = Vector2( -5.15994, 36.8466 )
+scale = Vector2( 1.4995, 1.42009 )
 curve = SubResource( 2 )
 script = ExtResource( 7 )
 _sections_unfolded = [ "Transform", "Visibility" ]
@@ -102,7 +129,63 @@ position = Vector2( -126.385, -51.2297 )
 scale = Vector2( 0.0248845, 0.0112956 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Player" parent="." index="2" instance=ExtResource( 9 )]
+[node name="PathDelayTimer" type="Timer" parent="Lines/PiranhaPath3" index="1"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+script = ExtResource( 9 )
+
+[node name="PiranhaPath5" type="Path2D" parent="Lines" index="3"]
+
+self_modulate = Color( 1, 0.942871, 0.0859375, 0.7 )
+position = Vector2( -9.77991, 45.558 )
+scale = Vector2( 1.62967, 1.72105 )
+curve = SubResource( 2 )
+script = ExtResource( 7 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+speed = 100
+
+[node name="TargetArea" parent="Lines/PiranhaPath5" index="0" instance=ExtResource( 8 )]
+
+position = Vector2( -126.385, -51.2297 )
+scale = Vector2( 0.0248845, 0.0112956 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="PathDelayTimer" type="Timer" parent="Lines/PiranhaPath5" index="1"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+script = ExtResource( 9 )
+
+[node name="PiranhaPath6" type="Path2D" parent="Lines" index="4"]
+
+self_modulate = Color( 1, 0.942871, 0.0859375, 0.7 )
+position = Vector2( -12.81, 58.0513 )
+scale = Vector2( 1.76209, 2.08962 )
+curve = SubResource( 2 )
+script = ExtResource( 7 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+speed = 100
+
+[node name="TargetArea" parent="Lines/PiranhaPath6" index="0" instance=ExtResource( 8 )]
+
+position = Vector2( -126.385, -51.2297 )
+scale = Vector2( 0.0248845, 0.0112956 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="PathDelayTimer" type="Timer" parent="Lines/PiranhaPath6" index="1"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+script = ExtResource( 9 )
+
+[node name="Player" parent="." index="2" instance=ExtResource( 10 )]
 
 position = Vector2( 281.302, 850.351 )
 scale = Vector2( 1.47862, 1.47862 )
@@ -130,6 +213,7 @@ shape = SubResource( 3 )
 
 [node name="Deathzone" type="Area2D" parent="." index="4"]
 
+editor/display_folded = true
 position = Vector2( 291.938, 961.631 )
 scale = Vector2( 9.13758, 2.14015 )
 input_pickable = true
@@ -154,6 +238,51 @@ process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
+
+[node name="HUD" type="CanvasLayer" parent="." index="6"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="Point" type="Label" parent="HUD" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 364.0
+margin_top = 6.0
+margin_right = 569.0
+margin_bottom = 26.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 5 )
+text = "Points:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts", "custom_styles" ]
+
+[connection signal="timeout" from="Lines/PiranhaPath/PathDelayTimer" to="Lines/PiranhaPath/PathDelayTimer" method="_on_PathDelayTimer_timeout"]
+
+[connection signal="timeout" from="Lines/PiranhaPath2/PathDelayTimer" to="Lines/PiranhaPath2/PathDelayTimer" method="_on_PathDelayTimer_timeout"]
+
+[connection signal="timeout" from="Lines/PiranhaPath3/PathDelayTimer" to="Lines/PiranhaPath3/PathDelayTimer" method="_on_PathDelayTimer_timeout"]
+
+[connection signal="timeout" from="Lines/PiranhaPath5/PathDelayTimer" to="Lines/PiranhaPath5/PathDelayTimer" method="_on_PathDelayTimer_timeout"]
+
+[connection signal="timeout" from="Lines/PiranhaPath6/PathDelayTimer" to="Lines/PiranhaPath6/PathDelayTimer" method="_on_PathDelayTimer_timeout"]
+
+[connection signal="death" from="Player" to="." method="_on_Player_death"]
+
+[connection signal="point" from="Player" to="." method="_on_Player_point"]
 
 [connection signal="body_entered" from="Deathzone" to="." method="_on_Deathzone_body_entered"]
 

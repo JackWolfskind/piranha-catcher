@@ -4,7 +4,7 @@ extends RigidBody2D
 signal hit
 
 func _ready():
-	add_to_group("enemy")
+	add_to_group("fish")
 	pass
 
 

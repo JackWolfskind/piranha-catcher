@@ -1,3 +1,4 @@
+
 extends KinematicBody2D
 
 export var SPEED = 200
@@ -6,8 +7,12 @@ const GRAVITY = 10
 const FLOOR = Vector2(0, -1)
 
 var velocity = Vector2()
+signal death
+signal point
 
 
+func jump(y):
+	velocity.y = y
 
 func _physics_process(delta):
 	
@@ -19,8 +24,16 @@ func _physics_process(delta):
 		velocity.x = 0
 		
 	if Input.is_action_just_pressed('ui_up'):
-		velocity.y = JUMP_POWER + ((position.y / 15) + GRAVITY)
-		
+		jump(JUMP_POWER + ((position.y / 15) + GRAVITY))
 	velocity.y += GRAVITY
-	
 	velocity = move_and_slide(velocity, FLOOR)
+
+func _on_TargetArea_body_entered(body):
+	if body.get_name() == "Piranha":
+		body.hit_target()
+		jump(JUMP_POWER * 0.75)
+		emit_signal("death")
+	if body.is_in_group("fish"):
+			body.hit_target()
+			jump(JUMP_POWER * 0.75)
+			emit_signal("point")

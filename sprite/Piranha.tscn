@@ -4,12 +4,6 @@
 [ext_resource path="res://art/Fish_100ms/fishframe2.png" type="Texture" id=2]
 [ext_resource path="res://art/Fish_100ms/fishframe.png" type="Texture" id=3]
 
-[sub_resource type="CapsuleShape2D" id=1]
-
-custom_solver_bias = 0.0
-radius = 10.0
-height = 20.0
-
 [sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
@@ -18,6 +12,11 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 11.745, 5.40402 )
 
 [node name="Piranha" type="RigidBody2D"]
 
@@ -42,30 +41,34 @@ angular_damp = -1.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Angular", "Applied Forces", "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
-
-position = Vector2( -0.373428, 0.951885 )
-scale = Vector2( 0.723807, 0.620456 )
-shape = SubResource( 1 )
-disabled = true
-_sections_unfolded = [ "Material", "Visibility" ]
-
-[node name="Visibility" type="VisibilityNotifier2D" parent="." index="1"]
-
-scale = Vector2( 0.724888, 0.869866 )
-rect = Rect2( -10, -10, 20, 20 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="2"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 
 rotation = 0.409991
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 2 )
 animation = "default"
-frame = 1
 playing = true
 _sections_unfolded = [ "Transform" ]
 
-[connection signal="screen_exited" from="Visibility" to="." method="_on_Visibility_screen_exited"]
+[node name="Visibility" type="VisibilityNotifier2D" parent="." index="1"]
+
+position = Vector2( -0.00484008, 0.0375085 )
+scale = Vector2( 0.864875, 0.623588 )
+rect = Rect2( -10, -10, 20, 20 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="DeathCollision" type="CollisionShape2D" parent="." index="2"]
+
+position = Vector2( 0.00771195, 1.32819 )
+scale = Vector2( 0.748786, 0.696466 )
+shape = SubResource( 3 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
+
+[node name="PointCollision" type="CollisionShape2D" parent="." index="3"]
+
+position = Vector2( -0.0395216, -6.01652 )
+scale = Vector2( 0.751989, 0.620456 )
+shape = SubResource( 3 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
 

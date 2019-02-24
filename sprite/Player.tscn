@@ -1,12 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://sprite/Player.gd" type="Script" id=1]
 [ext_resource path="res://art/char.png" type="Texture" id=2]
+[ext_resource path="res://sprite/TargetArea.tscn" type="PackedScene" id=3]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 9.58851, 10.4387 )
+extents = Vector2( 4.15649, 8.92728 )
 
 [sub_resource type="SpriteFrames" id=2]
 
@@ -19,6 +20,7 @@ animations = [ {
 
 [node name="Player" type="KinematicBody2D"]
 
+position = Vector2( 0.385536, 0.128511 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -30,14 +32,22 @@ JUMP_POWER = -125
 
 [node name="Collision" type="CollisionShape2D" parent="." index="0"]
 
-position = Vector2( 0.914503, 0.742568 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
 
+position = Vector2( -0.566803, -0.377871 )
 frames = SubResource( 2 )
 animation = "default"
 playing = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="TargetArea" parent="." index="2" instance=ExtResource( 3 )]
+
+position = Vector2( 0.184017, 0.240483 )
+scale = Vector2( 0.022333, 0.0444985 )
+
+[connection signal="body_entered" from="TargetArea" to="." method="_on_TargetArea_body_entered"]
 
 

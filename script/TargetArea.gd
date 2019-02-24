@@ -24,10 +24,9 @@ func show_splat():
 	splat_timer.set_wait_time(splat_timer.wait_time + splat_timer.time_left)
 
 func _on_TargetArea_piranha_entered(body):
-	if body.get_name() == "Piranha":
+	if body.get_name() == "Piranha" || body.get_name() == "Fish":
 		body.hit_target()
 		show_splat()
-		
 		emit_signal("fish_entered")
 
 func _on_splatTimer_timeout():
